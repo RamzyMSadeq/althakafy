@@ -97,7 +97,7 @@ class _ContactUsTabState extends State<ContactUsTab> {
                     child: Column(
              children: [
                 Text(
-              "كن علي تواصل معنا",
+              "كن على تواصل معنا",
               style: getStyle(18, true, blackColor),
             ),
             SizedBox(

@@ -37,6 +37,8 @@ String baseUrl = 'https://salthaqafy.com/books_api/';
 String allBooksEndPoint = 'fetch_books.php';
  String contactUsEndPoint = 'send_message.php';
  String allAboutMeEndPoint = 'fetch_cv.php';
+ String allLocationsEndPoint = 'fetch_locations.php';
+
 
 
 

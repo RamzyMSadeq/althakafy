@@ -24,42 +24,16 @@ class _HomePageState extends State<HomePage> {
 
   // @override
   // void initState() {
-  //   //init();
-  //     controllerUserGet.getGeneralDataPharamcyUser(
-  //                     controllerUserGet.allHomeData['pharmacy']['id']
-  //                         .toString());
-  //                 controllerUserGet.getGalleryPharamcyUser(controllerUserGet
-  //                     .allHomeData['pharmacy']['id']
-  //                     .toString());
-  //                 controllerUserGet.getOffersPharamcyUser(controllerUserGet
-  //                     .allHomeData['pharmacy']['id']
-  //                     .toString());
-  //                 controllerUserGet.getReviewPharamcyUser(controllerUserGet
-  //                     .allHomeData['pharmacy']['id']
-  //                     .toString());
-  //                  controllerUserGet.getProductsPharamcyUser(
-  //                     controllerUserGet.allHomeData['pharmacy']['id']
-  //                         .toString());
-  //   controllerUserGet.getAllProductsUser();
+    
   //   super.initState();
-
+  //   init();
   // }
 
   // init() async {
-  //   controllerUserGet.getAllHome();
-  //   controllerUserGet.getAllCartUser();
-  //   controllerUserGet.getAllAddressesUser();
-  //   controllerUserGet.getAllOrdersUser();
-  //   controllerUserGet.getAllFavoriteProductsUser();
-  //   controllerUserGet.getProfileUser();
-  //   controllerUserGet.getAllCtegoriesUser();
-  //   controllerUserGet.getAllNotification();
-  //   controllerUserGet.getCtegoriesUser2(categoryId: "1");
-  //   controllerUserGet.getCtegoriesUser3(categoryId: "2");
+  //   controllerUserGet.getAllBooks();
+  //   controllerUserGet.getAllAboutMe();
 
-  //  await controllerUserGet.getAllPharmaciesOffersUser();
-
-  // }
+  //  }
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -88,10 +62,10 @@ class _HomePageState extends State<HomePage> {
             title: Text(controllerUserGet.selectedIndex == 0
                 ? "السيرة الذاتية"
                 : controllerUserGet.selectedIndex == 1
-                    ? "الرأيسية"
+                    ? "الرئيسية"
                     : controllerUserGet.selectedIndex == 2
                         ? "تواصل معنا"
-                        : "الرأيسية"),
+                        : "الرئيسية"),
           ),
           body: Center(
             child: widgetOptions.elementAt(controller.selectedIndex),
@@ -106,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   child: Center(child: SvgPicture.asset(logosplashSvgsName)),
                 ),
                 ListTile(
-                  title: Text("الرأيسية"),
+                  title: Text("الرئيسية"),
                   trailing: Icon(Icons.arrow_forward),
                   onTap: () {
                     controllerUserGet.setSelectedIndex(1);
@@ -171,7 +145,7 @@ class _HomePageState extends State<HomePage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                label: 'الرأيسية',
+                label: 'الرئيسية',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.contact_support_sharp),

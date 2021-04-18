@@ -13,6 +13,8 @@ class AppGet extends GetxController {
   var allBookData = [].obs;
   var messageContact = {}.obs;
   var cVContact = {}.obs;
+  var allLocations = [].obs;
+
 
 
 
@@ -84,12 +86,30 @@ class AppGet extends GetxController {
       pr.hide();
     }
   }
-
+/////////////////////////////////////////////////
    getAllAboutMe() async {
     try {
       //  if (allHome.value.status == null) {
       Map map = await Server.server.getAllAboutMe();
       cVContact.value = map;
+      //update(['cart']);
+
+      // } else {
+      //   allHome.value = allHome.value;
+      //   loadData(false);
+      // }
+    } catch (e) {
+      print("ddddddddddddddd $e");
+    }
+  }
+
+
+  /////////////////////////////////////////////////
+   getAllLocations() async {
+    try {
+      //  if (allHome.value.status == null) {
+      List map = await Server.server.getAllLocations();
+      allLocations.value = map;
       //update(['cart']);
 
       // } else {
