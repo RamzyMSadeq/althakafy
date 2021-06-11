@@ -1,5 +1,6 @@
 import 'package:althaqafy/features/GetApp/app_get.dart';
 import 'package:althaqafy/splash_screen.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,12 @@ void main() async{
     WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  runApp(MyApp());
+  runApp(
+      DevicePreview(
+        builder: (context) => MyApp(), // Wrap your app
+      )
+   // MyApp()
+    );
 }
 
 class MyApp extends StatelessWidget {

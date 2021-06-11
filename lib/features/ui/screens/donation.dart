@@ -43,12 +43,14 @@ class Donations extends StatelessWidget {
               height: getHeightMedia(30, context),
             ),
             Container(
-                height: getHeightMedia(450, context),
+                //height: getHeightMedia(450, context),
                 width: double.infinity,
                 decoration: BoxDecoration(
                     borderRadius: borderRadius8,
                     color: orangeOpacityColor.withOpacity(.1)),
                 child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
                   itemCount: controllerAppGet.allLocations.length,
                   itemBuilder: (context, index) {
                     return Column(

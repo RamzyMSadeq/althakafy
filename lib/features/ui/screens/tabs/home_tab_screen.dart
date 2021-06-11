@@ -23,7 +23,7 @@ class HomeTabScreen extends StatelessWidget {
         right: getHeightMedia(10, context),
         top: getHeightMedia(10, context),
       ),
-      child: Column(
+      child: ListView(
         children: [
           Container(
             height: getHeightMedia(200, context),
@@ -59,110 +59,121 @@ class HomeTabScreen extends StatelessWidget {
                         child: Text("لا يوجد كتب"),
                       )))
                     : Container(
-                        child: Expanded(
-                            child: GridView.builder(
+                        child: GridView.builder(
+                          shrinkWrap: true,
+                          physics: ScrollPhysics(),
+                          controller: new ScrollController(keepScrollOffset: false),
                           itemCount: controllerUserGet.allBookData.value.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: .75,
-                                  crossAxisSpacing: 10,
-                                  mainAxisSpacing: 10),
+                          SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio:(MediaQuery.of(context).size.width/2.5) /
+                                             (MediaQuery.of(context).size.height /3.5),
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10),
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding: EdgeInsets.all(5),
-                              height: getWidthMedia(200, context),
-                              width: getWidthMedia(160, context),
-                              decoration: BoxDecoration(
-                                borderRadius: borderRadius8,
-                                border: Border.all(color: orangeOpacityColor),
+                        return Container(
+                          padding: EdgeInsets.all(5),
+                         height: getWidthMedia(200, context),
+                          width: getWidthMedia(160, context),
+                          decoration: BoxDecoration(
+                            borderRadius: borderRadius8,
+                            border: Border.all(color: orangeOpacityColor),
+                          ),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                                              child: Container(
+                                  // height: getHeightMedia(150, context),
+                                  // width: getWidthMedia(140, context),
+                                  decoration: BoxDecoration(
+                                      borderRadius: borderRadius8,
+                                      border: Border.all(
+                                          color: orangeOpacityColor),
+                                      image: DecorationImage(
+                                          image: CachedNetworkImageProvider(
+                                              controllerUserGet.allBookData
+                                                      .value[index]
+                                                  ['_book_image_url']),
+                                          fit: BoxFit.fill)),
+                                ),
                               ),
-                              child: Column(
+                              SizedBox(
+                                height: getHeightMedia(10, context),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    height: getWidthMedia(180, context),
-                                    width: getWidthMedia(160, context),
-                                    decoration: BoxDecoration(
-                                        borderRadius: borderRadius8,
-                                        border: Border.all(
-                                            color: orangeOpacityColor),
-                                        image: DecorationImage(
-                                            image: CachedNetworkImageProvider(
-                                                controllerUserGet.allBookData
-                                                        .value[index]
-                                                    ['_book_image_url']),
-                                            fit: BoxFit.fill)),
-                                  ),
-                                  SizedBox(
-                                    height: getHeightMedia(10, context),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          Get.to(ViewBooksScreen(
-                                            bookUrl: controllerUserGet
-                                                .allBookData
-                                                .value[index]['_book_url']
-                                                .toString(),
-                                            name: controllerUserGet.allBookData
-                                                .value[index]['_book_name']
-                                                .toString(),
-                                          ));
-                                        },
-                                        child: Container(
-                                          width: getWidthMedia(78, context),
-                                          height: getHeightMedia(30, context),
-                                          decoration: BoxDecoration(
-                                              borderRadius: borderRadius8,
-                                              border: Border.all(
-                                                  color: orangeOpacityColor),
-                                              color: orangeOpacityColor),
-                                          child: Center(
-                                            child: Text(
-                                              "مشاهدة",
-                                              style: getStyle(
-                                                  12, false, whiteColor),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () async {
-                                          String url = controllerUserGet
+                                  Expanded(
+                                                                      child: InkWell(
+                                      onTap: () {
+                                        Get.to(ViewBooksScreen(
+                                          bookUrl: controllerUserGet
                                               .allBookData
                                               .value[index]['_book_url']
-                                              .toString();
-                                          if (await canLaunch(url)) {
-                                            await launch(url);
-                                          } else {}
-                                        },
-                                        child: Container(
-                                          width: getWidthMedia(78, context),
-                                          height: getHeightMedia(30, context),
-                                          decoration: BoxDecoration(
-                                              borderRadius: borderRadius8,
-                                              border: Border.all(
-                                                  color: orangeOpacityColor),
-                                              color: greenColor),
-                                          child: Center(
-                                            child: Text(
-                                              "تحميل",
-                                              style: getStyle(
-                                                  12, false, whiteColor),
-                                            ),
+                                              .toString(),
+                                          name: controllerUserGet.allBookData
+                                              .value[index]['_book_name']
+                                              .toString(),
+                                        ));
+                                      },
+                                      child: Container(
+                                      //  width: getWidthMedia(55, context),
+                                        height: getHeightMedia(30, context),
+                                        decoration: BoxDecoration(
+                                            borderRadius: borderRadius8,
+                                            border: Border.all(
+                                                color: orangeOpacityColor),
+                                            color: orangeOpacityColor),
+                                        child: Center(
+                                          child: Text(
+                                            "مشاهدة",
+                                            style: getStyle(
+                                                10, false, whiteColor),
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  )
+                                    ),
+                                  ),
+                                  SizedBox(width: getWidthMedia(5, context)),
+                                  Expanded(
+                                                                      child: InkWell(
+                                      onTap: () async {
+                                        String url = controllerUserGet
+                                            .allBookData
+                                            .value[index]['_book_url']
+                                            .toString();
+                                        if (await canLaunch(url)) {
+                                          await launch(url);
+                                        } else {}
+                                      },
+                                      child: Container(
+                                        width: getWidthMedia(55, context),
+                                        height: getHeightMedia(30, context),
+                                        decoration: BoxDecoration(
+                                            borderRadius: borderRadius8,
+                                            border: Border.all(
+                                                color: orangeOpacityColor),
+                                            color: greenColor),
+                                        child: Center(
+                                          child: Text(
+                                            "تحميل",
+                                            style: getStyle(
+                                                10, false, whiteColor),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
-                              ),
-                            );
+                              )
+                            ],
+                          ),
+                        );
                           },
-                        )),
+                        ),
                       );
           })
         ],

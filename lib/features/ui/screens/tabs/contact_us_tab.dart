@@ -68,7 +68,7 @@ class _ContactUsTabState extends State<ContactUsTab> {
         children: [
           Container(
             padding: EdgeInsets.all(20),
-            height: getHeightMedia(240, context),
+           // height: getHeightMedia(240, context),
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: borderRadius8,
