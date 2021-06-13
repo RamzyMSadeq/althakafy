@@ -10,10 +10,10 @@ void main() async{
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(
-      DevicePreview(
-        builder: (context) => MyApp(), // Wrap your app
-      )
-   // MyApp()
+      // DevicePreview(
+      //   builder: (context) => MyApp(), // Wrap your app
+      // )
+    MyApp()
     );
 }
 
